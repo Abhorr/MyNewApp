@@ -3,4 +3,22 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="starting_page_add_collection_button">Add New Collection</string>
+    <string name="starting_page_choose_collection_button">Choose Collection</string>
+    <string name="invalid_collection_name">You already have collection with this name, please, choose another one.</string>
+
+
+    <string name="new_collection_name_edit">My new collection</string>
+    <string name="new_collection_name_title">Enter your collection name</string>
+    <string name="collection_item_options_title">Options for new collection</string>
+    <string name="collection_item_name">Name</string>
+    <string name="collection_item_photo">Photo/Image</string>
+    <string name="collection_item_description">Description</string>
+    <string name="collection_item_location">Location</string>
+    <string name="collection_item_link">Link</string>
+    <string name="collection_item_create_button">Create Collection</string>
+
+
 </resources>

@@ -4,15 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.abhorrent.prj.collectioner.Adapters.BoxAdapter;
 import com.abhorrent.prj.collectioner.Items.MenuItem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AddCollection extends Activity{
 
@@ -32,7 +29,9 @@ public class AddCollection extends Activity{
     }
 
     void fillData() {
-        String[] texts = { "Collection Item's Name", "Photo/Image", "Description","Location","Link"};
+        String[] texts = { getString(R.string.collection_item_name),getString(R.string.collection_item_photo),
+                getString(R.string.collection_item_description),getString(R.string.collection_item_location),
+                getString(R.string.collection_item_link),};
         boolean[] checked = { true, false, false, false, false};
         int[] imgs = {  R.drawable.ic_action_edit,
                 R.drawable.ic_action_new_picture,

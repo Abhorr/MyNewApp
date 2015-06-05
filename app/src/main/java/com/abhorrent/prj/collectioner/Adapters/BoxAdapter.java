@@ -10,7 +10,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.abhorrent.prj.collectioner.Items.MenuItem;
 import com.abhorrent.prj.collectioner.R;
@@ -46,7 +45,7 @@ public class BoxAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
-            view = lInflater.inflate(R.layout.item, parent, false);
+            view = lInflater.inflate(R.layout.add_collection_item, parent, false);
         }
         MenuItem mi = getMenuItem(position);
         ((ImageView) view.findViewById(R.id.ivImg)).setImageResource(mi.icon);

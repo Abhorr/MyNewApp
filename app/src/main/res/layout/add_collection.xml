@@ -17,15 +17,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:text="Options for new collection"
+            android:text="@string/collection_item_options_title"
             android:textSize="30dp"
             android:textStyle="normal" />
 
         <View
-            android:id="@+id/devider"
+            android:id="@+id/divider"
             android:layout_width="fill_parent"
             android:layout_height="2dp"
             android:background="#c0c0c0" />
+
     </LinearLayout>
 
     <ListView
@@ -44,5 +45,5 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"
         android:onClick="showResult"
-        android:text="Create Collection" />
+        android:text="@string/collection_item_create_button" />
 </RelativeLayout>
