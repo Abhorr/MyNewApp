@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
 import android.text.Editable;
@@ -99,18 +100,24 @@ public class StartingActivity extends Activity {
                 DB db = new DB(getApplicationContext());
                 db.open();
                 Cursor c = db.getAllData();
-                c.moveToFirst();
-                if (c != null) {
-                    do {
-                        for (int i = 0; i < c.getColumnCount(); i++) {
-                            if (c.getString(i).equals(etStr)) {
-                                isDeclared = true;
-                                break;
+                try {
+                    c.moveToFirst();
+
+                    if (c != null) {
+                        do {
+                            for (int i = 0; i < c.getColumnCount(); i++) {
+                                if (c.getString(i).equals(etStr)) {
+                                    isDeclared = true;
+                                    break;
+                                }
                             }
-                        }
-                        if (isDeclared)
-                            break;
-                    }while (c.moveToNext());
+                            if (isDeclared)
+                                break;
+                        } while (c.moveToNext());
+                    }
+                }catch (CursorIndexOutOfBoundsException e)
+                {
+                    e.printStackTrace();
                 }
                 if (isDeclared)
                     Toast.makeText(getApplicationContext(),getString(R.string.invalid_collection_name),Toast.LENGTH_SHORT).show();
@@ -118,6 +125,7 @@ public class StartingActivity extends Activity {
                     db.addRec(etStr,191);
                     db.close();
                     c.close();
+                    isDeclared = false;
                     Intent intent = new Intent(getApplicationContext(), AddCollection.class);
                     startActivity(intent);
                 }
