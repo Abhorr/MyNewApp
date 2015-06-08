@@ -97,37 +97,43 @@ public class StartingActivity extends Activity {
 
         alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                DB db = new DB(getApplicationContext());
-                db.open();
-                Cursor c = db.getAllData();
-                try {
-                    c.moveToFirst();
+                if (!etStr.isEmpty()) {
+                    DB db = new DB(getApplicationContext());
+                    db.open();
+                    Cursor c = db.getAllData("Collection_List");
+                    try {
+                        c.moveToFirst();
 
-                    if (c != null) {
-                        do {
-                            for (int i = 0; i < c.getColumnCount(); i++) {
-                                if (c.getString(i).equals(etStr)) {
-                                    isDeclared = true;
-                                    break;
+                        if (c != null) {
+                            do {
+                                for (int i = 0; i < c.getColumnCount(); i++) {
+                                    try {
+                                        if (c.getString(i).equals(etStr)) {
+                                            isDeclared = true;
+                                            break;
+                                        }
+                                    } catch (IllegalStateException e) {
+                                        continue;
+                                    }
                                 }
-                            }
-                            if (isDeclared)
-                                break;
-                        } while (c.moveToNext());
+                                if (isDeclared)
+                                    break;
+                            } while (c.moveToNext());
+                        }
+                    } catch (CursorIndexOutOfBoundsException e) {
+                        e.printStackTrace();
                     }
-                }catch (CursorIndexOutOfBoundsException e)
-                {
-                    e.printStackTrace();
-                }
-                if (isDeclared)
-                    Toast.makeText(getApplicationContext(),getString(R.string.invalid_collection_name),Toast.LENGTH_SHORT).show();
-                else {
-                    db.addRec(etStr,191);
-                    db.close();
-                    c.close();
-                    isDeclared = false;
-                    Intent intent = new Intent(getApplicationContext(), AddCollection.class);
-                    startActivity(intent);
+                    if (isDeclared)
+                        Toast.makeText(getApplicationContext(), getString(R.string.invalid_collection_name), Toast.LENGTH_SHORT).show();
+                    else {
+                        //db.addRec(etStr, 191);
+                        db.close();
+                        c.close();
+                        isDeclared = false;
+                        etStr = "";
+                        Intent intent = new Intent(getApplicationContext(), AddCollection.class);
+                        startActivity(intent);
+                    }
                 }
             }
         });
@@ -140,9 +146,4 @@ public class StartingActivity extends Activity {
             e.printStackTrace();
         }
     }
-
-/*    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle bndl) {
-        return new MyCursorLoader(this, db);
-    }*/
 }

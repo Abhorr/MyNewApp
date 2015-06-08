@@ -3,16 +3,89 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
-
     <LinearLayout
-        android:id="@+id/header_ll"
+        android:id="@+id/header_collection"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_header"
+            android:id="@+id/tv_header_collection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="@string/collection_options_title"
+            android:textSize="30dp"
+            android:textStyle="normal" />
+
+        <View
+            android:id="@+id/divider_collection"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/new_collection_name"
+                android:id="@+id/textView"
+                android:paddingLeft="5dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/new_collection_name_edit"
+                android:id="@+id/editNameText"
+                android:maxLength="32"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/new_collection_description"
+                android:id="@+id/textView2" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editDescriptionText" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/header_collection_item"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/header_collection">
+
+        <View
+            android:id="@+id/divider_top_collection_item"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0" />
+
+        <TextView
+            android:id="@+id/tv_header_collection_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -22,7 +95,7 @@
             android:textStyle="normal" />
 
         <View
-            android:id="@+id/divider"
+            android:id="@+id/divider_bottom_collection_item"
             android:layout_width="fill_parent"
             android:layout_height="2dp"
             android:background="#c0c0c0" />
@@ -34,9 +107,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button"
-        android:layout_below="@+id/header_ll"
         android:divider="@android:color/transparent"
-        android:dividerHeight="15.0sp"></ListView>
+        android:dividerHeight="15.0sp"
+        android:layout_below="@+id/header_collection_item"></ListView>
 
     <Button
         android:id="@+id/button"
