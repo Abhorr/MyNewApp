@@ -1,5 +1,6 @@
 package com.abhorrent.prj.collectioner;
 
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -19,8 +20,8 @@ public class MainActivity extends ActionBarActivity {
     //First We Declare Titles And Icons For Our Navigation Drawer List View
     //This Icons And Titles Are holded in an Array as you can see
 
-    String TITLES[] = {"Home","Events","Mail","Shop","Travel"};
-    int ICONS[] = {R.drawable.ic_action_edit,R.drawable.ic_action_map,R.drawable.ic_action_web_site,R.drawable.ic_action_edit,R.drawable.ic_action_new_picture};
+    String TITLES[] = {"Collections","Settings","About"};
+    int ICONS[] = {R.drawable.ic_action_picture,R.drawable.ic_action_settings,R.drawable.ic_action_about};
 
     //Similarly we Create a String Resource for the name and email in the header view
     //And we also create a int resource for profile picture in the header view
@@ -66,8 +67,10 @@ public class MainActivity extends ActionBarActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
 
-
         Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);        // Drawer object Assigned to the view
+        Drawer.setDrawerShadow(R.drawable.drawer_shadow,
+                GravityCompat.START);
+
         mDrawerToggle = new ActionBarDrawerToggle(this,Drawer,toolbar,R.string.openDrawer,R.string.closeDrawer){
 
             @Override
@@ -88,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
         }; // Drawer Toggle Object Made
         Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
         mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State
-
+        Drawer.openDrawer(mRecyclerView);
     }
 
 
