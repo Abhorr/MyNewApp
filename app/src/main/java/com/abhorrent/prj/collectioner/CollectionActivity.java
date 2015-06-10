@@ -51,7 +51,7 @@ public class CollectionActivity extends FragmentActivity implements LoaderManage
     // обработка нажатия кнопки
     public void onButtonClick(View view) {
         // добавляем запись
-        db.addRec("Collection_List","sometext " + (scAdapter.getCount() + 1), R.drawable.com_facebook_logo);
+        db.addRec("Collection_List","sometext " + (scAdapter.getCount() + 1), R.drawable.ic_launcher);
         // получаем новый курсор с данными
         getSupportLoaderManager().getLoader(0).forceLoad();
     }

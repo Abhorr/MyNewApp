@@ -24,4 +24,14 @@
     <string name="collection_item_link">Link</string>
     <string name="collection_item_create_button">Create Collection</string>
 
+
+
+    <string name="openDrawer">Open Drawer</string>
+    <string name="closeDrawer">Close Drawer</string>
+    <string name="title_section3">Menu 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+
+
 </resources>

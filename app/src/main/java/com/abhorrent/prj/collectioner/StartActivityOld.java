@@ -31,7 +31,8 @@ public class StartActivityOld extends Activity {
         final Button chooseGallery = (Button) findViewById(R.id.choose_collection);
         chooseGallery.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "No Actions are set here", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 

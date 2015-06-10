@@ -19,7 +19,7 @@ public class MyCursorLoader extends CursorLoader {
 
     @Override
     public Cursor loadInBackground() {
-        Cursor cursor = db.getAllData();
+        Cursor cursor = db.getAllData("Collection_List");
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
